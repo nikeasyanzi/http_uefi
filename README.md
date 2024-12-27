@@ -8,17 +8,16 @@ It supports operations such as file upload, test utility run, and log read to fa
 # Need to know before using it
 * Due to the limitation of the UEFI environment,
   
-  * Once the server is up and running, the UEFI shell interface is occupied and please interact with UEFI from remote instead.
+  * Once the server is up and running, the UEFI shell interface is override and please interact with UEFI from HTTP instead.
   
   * The HTTP server communication is synchronous.
 
-  * There is no I/O redirection. The EFI utilities need to output testlog on the UEFI filesystem for later read log command to access the test result.
+  * There is no I/O redirection. The EFI utilities must output test logs on the UEFI filesystem for later read commands to access the test result.
 
-* The communication protocol is **HTTP** not **HTTPS** and no authentication implemented. That makes it vlunerable to man-in-the-middle attacks, so PLEASE
-
-  do shorten the server running time on a worldwide network, and shutdown the server once your task is completed or
-  run the server on the local area network for better security.
-  
+* Security
+  The communication protocol is **HTTP** not **HTTPS** and no authentication is implemented. That makes it vulnerable to man-in-the-middle attacks,
+  so PLEASe stop the service once your task is completed
+    
 * It only accepts operations for testing purposes and I have no plan to support UEFI shell commands embedded in HTTP requests at this point. 
 
 # How to use
