@@ -6,9 +6,10 @@ It is built against Python 3.6.8 provided on EDK II.
 It supports operations such as file upload, test utility run, and log read to facilitate the testing process.
 
 # Need to know before using it
+## Manual run
 * Due to the limitation of the UEFI environment,
   
-  * Once the server is up and running, the UEFI shell interface is override and please interact with UEFI from HTTP instead.
+  * Once the server is up and running, the user can only interact with UEFI from HTTP, and UEFI shell interface is override.
   
   * The HTTP server communication is synchronous.
 
@@ -16,9 +17,13 @@ It supports operations such as file upload, test utility run, and log read to fa
 
 * Security
   The communication protocol is **HTTP** not **HTTPS** and no authentication is implemented. That makes it vulnerable to man-in-the-middle attacks,
-  so PLEASe stop the service once your task is completed
+  so PLEASE stop the service once your task is completed
     
-* It only accepts operations for testing purposes and I have no plan to support UEFI shell commands embedded in HTTP requests at this point. 
+* It only accepts operations for testing purposes and I have no plan to support UEFI shell commands embedded in HTTP requests at this point.
+  
+## Auto run the HTTP server when enter UEFI
+* Work with the `startup.nsh`, we can make UEFI to execute the HTTP binary once it enters the shell envoriment.
+* If you want to stop the HTTP server and return the shell environment, please emit exit command to the HTTP server
 
 # How to use
 * Copy the built Python libraries which are folders Tools and StdLib and the **http_uefi.py** in this repo  under your UEFI environment
