@@ -69,17 +69,17 @@ Assume we set TARGETURL=http://192.168.100.108:8080. The following commands demo
 
   curl -X POST -H "Content-Type: multipart/form-data" -F "file=@my_wake_test.efi" ${TARGETURL}
 
-* List list dir with the custom path 
+* List dir with the custom path 
 
   curl -H "Content-Type: application/json" -X POST --data '{"operation":"listdir","path":"FS0:\\uploads"}' ${TARGETURLi}/listdir
 
   curl ${TARGETURL}/getfilelist
     
-* Run run the efi test utility
+* Run the efi test utility
 
   curl ${TARGETURL}/run/my_wake_test.efi
 
-* ReadLog with the customized path
+* Read log with the customized path
 
   curl -H "Content-Type: application/json" -X POST --data '{path":"FS0:\\efi\\tools\\my_wake_test.LOG"}' ${TARGETURL}/readlog
     
